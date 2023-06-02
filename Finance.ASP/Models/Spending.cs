@@ -1,7 +1,4 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-
-namespace Finance.ASP.Models
+﻿namespace Finance.ASP.Models
 {
     public class Spending
     {
