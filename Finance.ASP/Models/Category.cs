@@ -1,6 +1,6 @@
 ﻿namespace Finance.ASP.Models
 {
-    public class Categories
+    public class Category
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

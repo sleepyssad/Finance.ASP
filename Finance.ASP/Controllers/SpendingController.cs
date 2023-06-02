@@ -18,6 +18,9 @@
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Spending spending)
         {
+            // add check spending.category 
+            // toLower string
+            // if spending.category absent, return error code 
             await GetService().CreateAsync(spending);
             return CreatedAtAction(nameof(Get), new { id = spending.Id }, spending);
         }
