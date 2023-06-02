@@ -17,11 +17,23 @@
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Spending spending)
         {
-            // add check spending.category 
-            // toLower string
-            // if spending.category absent, return error code 
-            await GetService().CreateAsync(spending);
-            return CreatedAtAction(nameof(Get), new { id = spending.Id }, spending);
+            using (var scope = GetProvider().CreateScope())
+            {
+                var categories = await scope.ServiceProvider.GetRequiredService<CategoryService>().GetAsync();
+                if (categories is List<Category> && categories.Count > 0) 
+                {
+                    foreach (var category in categories)
+                    {
+                        if (category.name.ToLower() == spending.category.ToLower())
+                        {
+                            await GetService().CreateAsync(spending);
+                            return CreatedAtAction(nameof(Get), new { id = spending.Id }, spending);
+                        }
+                    }
+                }
+            }
+
+            return BadRequest("Category not found");
         }
 
         [HttpPut("{id}")]
