@@ -2,9 +2,8 @@
 {
     public class SpendingService : BaceService<Spending>
     {
-        public SpendingService(IOptions<MongoDBSettings> options)
+        public SpendingService(IOptions<MongoDBSettings> options) : base(options, options.Value.Collections.Spending)
         {
-            SetCollection(options, options.Value.Collections.Spending);
         }
 
         public async Task<List<Spending>> GetAsync()

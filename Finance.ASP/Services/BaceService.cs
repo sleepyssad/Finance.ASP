@@ -8,7 +8,7 @@
 
         private IMongoCollection<T> __collection;
 
-        private protected void SetCollection(IOptions<MongoDBSettings> options, string collectionName)
+        public BaceService(IOptions<MongoDBSettings> options, string collectionName)
         {
             _options = options.Value;
 

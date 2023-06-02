@@ -1,10 +1,9 @@
 ﻿namespace Finance.ASP.Services
 {
-    public class CategoriesService : BaceService<Category>
+    public class CategoryService : BaceService<Category>
     {
-        public CategoriesService(IOptions<MongoDBSettings> options) 
+        public CategoryService(IOptions<MongoDBSettings> options) : base(options, options.Value.Collections.Categories) 
         {
-            SetCollection(options, options.Value.Collections.Categories);  
         }
 
         public async Task<List<Category>> GetAsync()

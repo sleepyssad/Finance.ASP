@@ -4,9 +4,8 @@
     [Route("api/[controller]")]
     public class SpendingController : BaceController<SpendingService>
     {
-        public SpendingController(SpendingService service)
+        public SpendingController(IServiceProvider provider, SpendingService service) : base(provider, service)
         {
-            SetService(service);
         }
 
         [HttpGet]

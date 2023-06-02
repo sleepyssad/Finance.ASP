@@ -2,11 +2,10 @@
 {
     [Controller]
     [Route("api/[controller]")]
-    public class CategoriesController : BaceController<CategoriesService>
+    public class CategoriesController : BaceController<CategoryService>
     {
-        public CategoriesController(CategoriesService service)
+        public CategoriesController(CategoryService service) : base(service)
         {
-            SetService(service);
         }
 
         [HttpGet]
